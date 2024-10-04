@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthOptions } from "next-auth"; // Asegúrate de usar NextAuthOptions
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
@@ -7,7 +7,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 // Opciones de autenticación
-export const authOptions: NextAuthOptions = { // Tipar como NextAuthOptions
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = { // Tipar como NextAuthOptions
     signIn: "/",
   },
   callbacks: {
-    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+    async redirect({ url, baseUrl }) {
       return url.startsWith(baseUrl) ? url : baseUrl + "/";
     },
   },
