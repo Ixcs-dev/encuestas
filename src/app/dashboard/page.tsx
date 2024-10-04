@@ -31,7 +31,6 @@ export default function DashboardPage() {
         <Button 
           onClick={handleLogout} 
           disabled={isLoggingOut}
-          variant="outline"
         >
           {isLoggingOut ? (
             <>

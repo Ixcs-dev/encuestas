@@ -1,4 +1,4 @@
-import NextAuth , {AuthOptions} from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth"; // Asegúrate de usar NextAuthOptions
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
@@ -7,7 +7,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 // Opciones de autenticación
-export const authOptions = {
+export const authOptions: NextAuthOptions = { // Tipar como NextAuthOptions
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({

@@ -23,7 +23,7 @@ export function LoginButton() {
           <p className="text-sm font-medium">{session.user?.name}</p>
           <p className="text-xs text-gray-500">{session.user?.email}</p>
         </div>
-        <Button variant="outline" onClick={() => signOut()}>
+        <Button onClick={() => signOut()}>
           Cerrar sesión
         </Button>
       </div>
