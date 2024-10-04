@@ -17,12 +17,12 @@ export const authOptions = {
     signIn: "/",
   },
   callbacks: {
-    async redirect({ url, baseUrl }: { url: string, baseUrl: string }) {
+    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
       return url.startsWith(baseUrl) ? url : baseUrl + "/";
     },
   },
 };
 
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
+// Exportar el manejador para GET y POST
+export const GET = NextAuth(authOptions);
+export const POST = NextAuth(authOptions);
