@@ -23,6 +23,8 @@ export const authOptions = {
   },
 };
 
-// Exportar el manejador para GET y POST
-export const GET = NextAuth(authOptions);
-export const POST = NextAuth(authOptions);
+// Exporta los manejadores para GET y POST
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export const GET = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, authOptions);
+export const POST = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, authOptions);
