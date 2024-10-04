@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from '@/lib/prisma'
+import  prisma  from '@/lib/prisma'
 
 type EncuestaData = {
   rol: string;
@@ -64,8 +64,11 @@ export async function submitEncuesta(data: EncuestaData) {
     const encuesta = await prisma.encuesta.create({
       data: encuestaData,
     })
+
+    console.log('Encuesta guardada:', encuesta)
     return { success: true, encuesta }
   } catch (error) {
+    console.error('Error al guardar la encuesta:', error)
     return { 
       success: false, 
       error: error instanceof Error ? error.message : 'Error desconocido al guardar la encuesta' 
