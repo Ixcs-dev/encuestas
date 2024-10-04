@@ -3,8 +3,10 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 
+// Instancia de PrismaClient
 const prisma = new PrismaClient();
 
+// Opciones de autenticación
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -23,8 +25,7 @@ export const authOptions = {
   },
 };
 
-// Exporta los manejadores para GET y POST
-import { NextApiRequest, NextApiResponse } from 'next';
+// Manejo de las rutas GET y POST
+const handler = NextAuth(authOptions);
 
-export const GET = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, authOptions);
-export const POST = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, authOptions);
+export { handler as GET, handler as POST };
