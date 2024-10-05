@@ -7,7 +7,8 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint .",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "postbuild": "npm run migrate"
   },
   "dependencies": {
     "@eslint/compat": "^1.1.1",
