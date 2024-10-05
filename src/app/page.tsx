@@ -1,14 +1,12 @@
-// app/page.tsx
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-import { authOptions } from "./api/auth/[...nextauth]/route"; // Asegúrate de que la ruta sea correcta
-import { LoginButton } from "./components/login-button"; // Importa tu componente aquí
-import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"; // Asegúrate de que estos componentes existen
+import { authOptions } from "@/lib/auth";
+import { LoginButton } from "../app/components/login-button";
+import { Card, CardContent, CardHeader, CardTitle } from "../app/components/ui/card";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
-  // Si el usuario ya está logueado, redirige al tablero
   if (session) {
     redirect("/dashboard");
   }
@@ -21,7 +19,7 @@ export default async function Home() {
         </CardHeader>
         <CardContent>
           <p className="mb-4">Por favor, inicia sesión para continuar.</p>
-          <LoginButton /> {/* Aquí es donde se usa el LoginButton */}
+          <LoginButton />
         </CardContent>
       </Card>
     </div>
